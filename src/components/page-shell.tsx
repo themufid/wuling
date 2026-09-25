@@ -1,14 +1,11 @@
-import { HomeExperience } from "@/components/home-experience";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
-export default function HomePage() {
+export function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <SiteHeader />
-      <main>
-        <HomeExperience />
-      </main>
+      <main className="pt-24">{children}</main>
       <SiteFooter />
     </>
   );

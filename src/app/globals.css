@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #07080b;
+  --bg-2: #101218;
+  --paper: #f3efe6;
+  --ink: #14161a;
+  --muted: #a39c92;
+  --line: rgba(243, 239, 230, 0.14);
+  --red: #d0121a;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --color-bg: var(--bg);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-red: var(--red);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--paper);
+  font-family: var(--font-body), sans-serif;
+}
+::selection { background: var(--red); color: white; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+.display {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.glass-nav {
+  background: rgba(7, 8, 11, 0.72);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.mask-line {
+  overflow: hidden;
+  display: block;
+}
+.mask-line > span {
+  display: block;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 48px;
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(243, 239, 230, 0.28);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: background 0.45s var(--ease), color 0.45s var(--ease), transform 0.45s var(--ease);
+}
+.btn:hover { background: var(--paper); color: var(--ink); }
+.btn-solid {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+.btn-solid:hover { background: transparent; color: var(--paper); }
+
+.h-scroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.5rem;
+}
+.h-scroll::-webkit-scrollbar { height: 2px; }
+.h-scroll::-webkit-scrollbar-thumb { background: rgba(243,239,230,0.35); }
+
+.shot {
+  position: relative;
+  overflow: hidden;
+  background: #0c0e13;
+}
+.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tech-line {
+  stroke-dasharray: 8 10;
+  animation: dash 14s linear infinite;
+}
+@keyframes dash { to { stroke-dashoffset: -240; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-line { animation: none; }
+  html { scroll-behavior: auto; }
+}
